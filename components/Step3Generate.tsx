@@ -4,7 +4,8 @@ import { Feature } from '../types';
 import DownloadIcon from './icons/DownloadIcon';
 import RedoIcon from './icons/RedoIcon';
 import Modal from './Modal';
-import { GENERATION_LOADING_MESSAGES } from '../constants';
+import { GENERATION_LOADING_MESSAGE_KEYS } from '../constants';
+import { useTranslation } from '../i18n';
 
 interface Step3GenerateProps {
   originalImageBase64: string;
@@ -14,25 +15,25 @@ interface Step3GenerateProps {
 }
 
 const Step3Generate: React.FC<Step3GenerateProps> = ({ originalImageBase64, selectedFeatures, onGenerate, onBack }) => {
+  const { t } = useTranslation();
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showQrModal, setShowQrModal] = useState(false);
-  const [loadingMessage, setLoadingMessage] = useState(GENERATION_LOADING_MESSAGES[0]);
+  const [loadingMessage, setLoadingMessage] = useState(t(GENERATION_LOADING_MESSAGE_KEYS[0]));
 
   useEffect(() => {
     let interval: number;
     if (isGenerating) {
       interval = window.setInterval(() => {
-        setLoadingMessage(prev => {
-          const currentIndex = GENERATION_LOADING_MESSAGES.indexOf(prev);
-          const nextIndex = (currentIndex + 1) % GENERATION_LOADING_MESSAGES.length;
-          return GENERATION_LOADING_MESSAGES[nextIndex];
+        setLoadingMessage(() => {
+            const randomIndex = Math.floor(Math.random() * GENERATION_LOADING_MESSAGE_KEYS.length);
+            return t(GENERATION_LOADING_MESSAGE_KEYS[randomIndex]);
         });
       }, 2500);
     }
     return () => clearInterval(interval);
-  }, [isGenerating]);
+  }, [isGenerating, t]);
 
   const handleGenerateClick = async () => {
     setIsGenerating(true);
@@ -46,7 +47,7 @@ const Step3Generate: React.FC<Step3GenerateProps> = ({ originalImageBase64, sele
         throw new Error();
       }
     } catch (e) {
-      setError("Image generation failed. Please try again.");
+      setError(t('step3.error'));
     } finally {
       setIsGenerating(false);
     }
@@ -71,25 +72,25 @@ const Step3Generate: React.FC<Step3GenerateProps> = ({ originalImageBase64, sele
 
   return (
     <div className="w-full max-w-5xl mx-auto text-center">
-      <h2 className="text-3xl font-orbitron text-cyan-400 mb-2">Step 3: Generation Complete</h2>
-      <p className="text-gray-400 mb-8">Your cyberpunk transformation is ready. Re-generate for a new look or download your creation.</p>
+      <h2 className="text-3xl font-orbitron text-cyan-400 mb-2">{t('step3.title')}</h2>
+      <p className="text-gray-400 mb-8">{t('step3.subtitle')}</p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div className="flex flex-col items-center">
-            <h3 className="text-xl font-orbitron text-purple-400 mb-4">Original</h3>
+            <h3 className="text-xl font-orbitron text-purple-400 mb-4">{t('step3.original')}</h3>
             <div className="relative border-2 border-gray-600 rounded-lg p-2">
               <img src={originalImageUrl} alt="Original" className="w-full max-w-sm rounded-md object-contain" />
             </div>
             <div className="mt-4 w-full max-w-sm">
-                <h4 className="text-lg font-orbitron text-gray-300">Selected Features:</h4>
+                <h4 className="text-lg font-orbitron text-gray-300">{t('step3.selectedFeatures')}</h4>
                 <div className="flex flex-wrap gap-2 justify-center mt-2">
-                    {selectedFeatures.map(f => <span key={f.id} className="bg-gray-700 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full">{f.name}</span>)}
+                    {selectedFeatures.map(f => <span key={f.id} className="bg-gray-700 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full">{t(f.nameKey)}</span>)}
                 </div>
             </div>
         </div>
 
         <div className="flex flex-col items-center">
-            <h3 className="text-xl font-orbitron text-cyan-400 mb-4">Cyberpunk Version</h3>
+            <h3 className="text-xl font-orbitron text-cyan-400 mb-4">{t('step3.cyberpunk')}</h3>
             <div className="relative w-full max-w-sm h-[400px] border-2 border-purple-500 rounded-lg p-2 shadow-lg shadow-purple-500/20 flex items-center justify-center bg-gray-900">
                 {isGenerating && (
                     <div className="flex flex-col items-center text-cyan-300">
@@ -113,29 +114,29 @@ const Step3Generate: React.FC<Step3GenerateProps> = ({ originalImageBase64, sele
       {!isGenerating && (generatedImage || error) && (
         <div className="mt-12 flex flex-wrap justify-center items-center gap-4">
           <button onClick={onBack} className="px-6 py-3 bg-gray-700 text-white font-semibold rounded-md hover:bg-gray-600 transition-colors">
-            Change Features
+            {t('step3.button.changeFeatures')}
           </button>
           <button onClick={handleGenerateClick} className="px-6 py-3 bg-purple-600 text-white font-bold rounded-md hover:bg-purple-500 transition-colors flex items-center gap-2">
-            <RedoIcon className="w-5 h-5"/> Re-generate
+            <RedoIcon className="w-5 h-5"/> {t('step3.button.regenerate')}
           </button>
           <button
             onClick={downloadImage}
             disabled={!generatedImage}
             className="px-6 py-3 bg-cyan-500 text-gray-900 font-bold rounded-md hover:bg-cyan-400 transition-colors flex items-center gap-2 disabled:bg-gray-600 disabled:cursor-not-allowed"
           >
-            <DownloadIcon className="w-5 h-5"/> Download
+            <DownloadIcon className="w-5 h-5"/> {t('step3.button.download')}
           </button>
           <button onClick={() => setShowQrModal(true)} className="px-6 py-3 bg-transparent border-2 border-pink-500 text-pink-400 font-bold rounded-md hover:bg-pink-500 hover:text-white transition-colors">
-            Donate & Join Chat
+            {t('step3.button.donate')}
           </button>
         </div>
       )}
 
-      <Modal isOpen={showQrModal} onClose={() => setShowQrModal(false)} title="Join Our Community">
+      <Modal isOpen={showQrModal} onClose={() => setShowQrModal(false)} title={t('step3.modal.title')}>
         <div className="text-center text-gray-300">
-            <p className="mb-4">Enjoying the results? Consider donating to support development. Donors get access to our exclusive group chat!</p>
+            <p className="mb-4">{t('step3.modal.text')}</p>
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://example.com/donate" alt="Donation QR Code" className="mx-auto rounded-lg border-2 border-cyan-400" />
-            <p className="mt-4 text-sm text-gray-500">Scan the code with your camera app.</p>
+            <p className="mt-4 text-sm text-gray-500">{t('step3.modal.scan')}</p>
         </div>
       </Modal>
 

@@ -1,0 +1,83 @@
+
+{
+  "header": {
+    "title_part1": "赛博朋克",
+    "title_part2": "照片增强器",
+    "subtitle": "利用AI的力量，将您的照片变成未来主义的杰作。"
+  },
+  "footer": {
+    "poweredBy": "由 Google Gemini 提供支持。所有图像均由AI生成。"
+  },
+  "steps": {
+    "1": "上传照片",
+    "2": "选择特征",
+    "3": "生成"
+  },
+  "step1": {
+    "title": "第1步：上传您的肖像",
+    "subtitle": "选择或拖放一张个人照片以开始转换。",
+    "dropzone": {
+      "title": "拖放或点击上传",
+      "subtitle": "支持PNG, JPG, WEBP格式"
+    },
+    "button": {
+      "chooseAnother": "选择另一张照片",
+      "verify": "验证并继续",
+      "verifying": "验证中..."
+    },
+    "error": {
+      "title": "验证错误",
+      "notPersonal": "这似乎不是一张个人照片。请上传一张人物照片（例如，自拍或肖像）。",
+      "failed": "验证失败。请检查您的网络连接并重试。",
+      "invalidFile": "请上传有效的图像文件（PNG、JPG等）。"
+    }
+  },
+  "step2": {
+    "title": "第2步：添加赛博朋克增强功能",
+    "subtitle": "将您想添加到照片中的特征拖放到此处。",
+    "available": "可用特征",
+    "selected": "您选择的增强功能",
+    "dropzone": "将特征拖放到此处",
+    "button": "继续生成"
+  },
+  "step3": {
+    "title": "第3步：生成完成",
+    "subtitle": "您的赛博朋克转换已准备就绪。重新生成以获得新外观，或下载您的创作。",
+    "original": "原始照片",
+    "cyberpunk": "赛博朋克版本",
+    "selectedFeatures": "已选特征：",
+    "error": "图像生成失败。请重试。",
+    "button": {
+      "changeFeatures": "更改特征",
+      "regenerate": "重新生成",
+      "download": "下载",
+      "donate": "捐赠并加入聊天"
+    },
+    "modal": {
+      "title": "加入我们的社区",
+      "text": "喜欢这个结果吗？考虑捐赠以支持开发。捐赠者可以加入我们的专属群聊！",
+      "scan": "用您的相机应用扫描二维码。"
+    }
+  },
+  "features": {
+    "feat1": { "name": "霓虹纹身", "description": "发光的电路状纹身。" },
+    "feat2": { "name": "义眼", "description": "机器人或发光的虹膜。" },
+    "feat3": { "name": "全息头发", "description": "闪闪发光的彩色全息图头发。" },
+    "feat4": { "name": "未来城市景观", "description": "霓虹灯浸染的城市背景。" },
+    "feat5": { "name": "铬合金植入物", "description": "光滑的金属皮肤植入物。" },
+    "feat6": { "name": "数据接口", "description": "颈部或太阳穴上的一个微妙接口。" },
+    "feat7": { "name": "发光面罩", "description": "覆盖在眼睛上的透明发光面罩。" },
+    "feat8": { "name": "科技服装", "description": "时尚、未来主义的服装。" },
+    "feat9": { "name": "雨天氛围", "description": "富有情调的雨和湿漉漉的倒影。" },
+    "feat10": { "name": "故障效果", "description": "微妙的数字失真效果。" }
+  },
+  "loadingMessages": {
+    "1": "正在重新路由神经通路...",
+    "2": "正在校准霓虹灯发射器...",
+    "3": "正在编译未来主义美学...",
+    "4": "正在初始化铬合金饰面...",
+    "5": "正在访问主机...",
+    "6": "正在渲染全息覆盖层...",
+    "7": "正在增强光学植入物..."
+  }
+}

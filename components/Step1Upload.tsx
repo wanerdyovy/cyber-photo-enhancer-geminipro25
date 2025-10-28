@@ -1,6 +1,7 @@
 
 import React, { useState, useCallback } from 'react';
 import UploadIcon from './icons/UploadIcon';
+import { useTranslation } from '../i18n';
 
 interface Step1UploadProps {
   onImageVerified: (file: File, base64: string) => void;
@@ -8,6 +9,7 @@ interface Step1UploadProps {
 }
 
 const Step1Upload: React.FC<Step1UploadProps> = ({ onImageVerified, verifyIsPersonalPhoto }) => {
+  const { t } = useTranslation();
   const [image, setImage] = useState<{ file: File, preview: string, base64: string } | null>(null);
   const [isVerifying, setIsVerifying] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -17,7 +19,7 @@ const Step1Upload: React.FC<Step1UploadProps> = ({ onImageVerified, verifyIsPers
     if (files && files[0]) {
       const file = files[0];
       if (!file.type.startsWith('image/')) {
-        setError("Please upload a valid image file (PNG, JPG, etc.).");
+        setError(t('step1.error.invalidFile'));
         return;
       }
       setError(null);
@@ -43,11 +45,11 @@ const Step1Upload: React.FC<Step1UploadProps> = ({ onImageVerified, verifyIsPers
       if (isPersonal) {
         onImageVerified(image.file, image.base64);
       } else {
-        setError("This doesn't seem to be a personal photo. Please upload a picture of a person (e.g., a selfie or portrait).");
+        setError(t('step1.error.notPersonal'));
         setImage(null);
       }
     } catch (e) {
-      setError("Verification failed. Please check your connection and try again.");
+      setError(t('step1.error.failed'));
     } finally {
       setIsVerifying(false);
     }
@@ -77,8 +79,8 @@ const Step1Upload: React.FC<Step1UploadProps> = ({ onImageVerified, verifyIsPers
 
   return (
     <div className="w-full max-w-xl mx-auto text-center">
-      <h2 className="text-3xl font-orbitron text-cyan-400 mb-2">Step 1: Upload Your Portrait</h2>
-      <p className="text-gray-400 mb-8">Select or drag & drop a personal photo to begin the transformation.</p>
+      <h2 className="text-3xl font-orbitron text-cyan-400 mb-2">{t('step1.title')}</h2>
+      <p className="text-gray-400 mb-8">{t('step1.subtitle')}</p>
 
       {!image && (
         <label 
@@ -90,8 +92,8 @@ const Step1Upload: React.FC<Step1UploadProps> = ({ onImageVerified, verifyIsPers
         >
           <div className="flex flex-col items-center justify-center h-full">
             <UploadIcon className="w-12 h-12 text-gray-500 mb-4" />
-            <span className="text-lg font-semibold text-gray-300">Drag & Drop or Click to Upload</span>
-            <span className="text-sm text-gray-500">PNG, JPG, WEBP supported</span>
+            <span className="text-lg font-semibold text-gray-300">{t('step1.dropzone.title')}</span>
+            <span className="text-sm text-gray-500">{t('step1.dropzone.subtitle')}</span>
           </div>
           <input type="file" accept="image/*" className="opacity-0 absolute inset-0 w-full h-full cursor-pointer" onChange={(e) => handleFileChange(e.target.files)} />
         </label>
@@ -107,7 +109,7 @@ const Step1Upload: React.FC<Step1UploadProps> = ({ onImageVerified, verifyIsPers
                 onClick={() => setImage(null)} 
                 className="px-6 py-3 bg-gray-700 text-white font-semibold rounded-md hover:bg-gray-600 transition-colors"
             >
-              Choose a different photo
+              {t('step1.button.chooseAnother')}
             </button>
             <button
               onClick={handleVerify}
@@ -120,9 +122,9 @@ const Step1Upload: React.FC<Step1UploadProps> = ({ onImageVerified, verifyIsPers
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Verifying...
+                  {t('step1.button.verifying')}
                 </>
-              ) : 'Verify & Proceed'}
+              ) : t('step1.button.verify')}
             </button>
           </div>
         </div>
@@ -130,7 +132,7 @@ const Step1Upload: React.FC<Step1UploadProps> = ({ onImageVerified, verifyIsPers
 
       {error && (
         <div className="mt-6 bg-red-900/50 border border-red-500 text-red-300 px-4 py-3 rounded-md animate-fade-in-up">
-          <p className="font-bold">Verification Error</p>
+          <p className="font-bold">{t('step1.error.title')}</p>
           <p>{error}</p>
         </div>
       )}

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Feature } from '../types';
+import { useTranslation } from '../i18n';
 
 interface FeatureChipProps {
   feature: Feature;
@@ -9,6 +10,8 @@ interface FeatureChipProps {
 }
 
 const FeatureChip: React.FC<FeatureChipProps> = ({ feature, isDraggable = false, onRemove }) => {
+  const { t } = useTranslation();
+  
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
     e.dataTransfer.setData('featureId', feature.id);
   };
@@ -19,7 +22,7 @@ const FeatureChip: React.FC<FeatureChipProps> = ({ feature, isDraggable = false,
       onDragStart={isDraggable ? handleDragStart : undefined}
       className={`flex items-center bg-gray-800 border border-gray-600 rounded-full px-4 py-2 text-sm font-medium text-gray-200 cursor-grab active:cursor-grabbing transition-all duration-200 hover:border-purple-500 hover:bg-gray-700 ${!isDraggable && 'cursor-default'}`}
     >
-      <span>{feature.name}</span>
+      <span>{t(feature.nameKey)}</span>
       {onRemove && (
         <button onClick={() => onRemove(feature.id)} className="ml-2 text-gray-500 hover:text-red-400">
           &times;

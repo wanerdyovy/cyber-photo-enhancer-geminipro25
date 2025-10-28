@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Feature } from '../types';
 import { CYBERPUNK_FEATURES } from '../constants';
 import FeatureChip from './FeatureChip';
+import { useTranslation } from '../i18n';
 
 interface Step2FeaturesProps {
   selectedFeatures: Feature[];
@@ -11,6 +12,7 @@ interface Step2FeaturesProps {
 }
 
 const Step2Features: React.FC<Step2FeaturesProps> = ({ selectedFeatures, setSelectedFeatures, onNextStep }) => {
+  const { t } = useTranslation();
   const [isDraggingOver, setIsDraggingOver] = useState(false);
 
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -44,13 +46,13 @@ const Step2Features: React.FC<Step2FeaturesProps> = ({ selectedFeatures, setSele
   return (
     <div className="w-full max-w-4xl mx-auto">
       <div className="text-center">
-        <h2 className="text-3xl font-orbitron text-cyan-400 mb-2">Step 2: Add Cybernetic Enhancements</h2>
-        <p className="text-gray-400 mb-8">Drag & drop features you want to add to your photo.</p>
+        <h2 className="text-3xl font-orbitron text-cyan-400 mb-2">{t('step2.title')}</h2>
+        <p className="text-gray-400 mb-8">{t('step2.subtitle')}</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div>
-          <h3 className="text-xl font-orbitron text-purple-400 mb-4 text-center">Available Features</h3>
+          <h3 className="text-xl font-orbitron text-purple-400 mb-4 text-center">{t('step2.available')}</h3>
           <div className="bg-gray-900/50 p-4 rounded-lg min-h-[200px] flex flex-wrap gap-3 justify-center content-start">
             {availableFeatures.map(feature => (
               <FeatureChip key={feature.id} feature={feature} isDraggable />
@@ -58,7 +60,7 @@ const Step2Features: React.FC<Step2FeaturesProps> = ({ selectedFeatures, setSele
           </div>
         </div>
         <div>
-            <h3 className="text-xl font-orbitron text-cyan-400 mb-4 text-center">Your Chosen Enhancements</h3>
+            <h3 className="text-xl font-orbitron text-cyan-400 mb-4 text-center">{t('step2.selected')}</h3>
             <div
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}
@@ -67,7 +69,7 @@ const Step2Features: React.FC<Step2FeaturesProps> = ({ selectedFeatures, setSele
             >
                 {selectedFeatures.length === 0 ? (
                     <div className="flex items-center justify-center h-full">
-                        <p className="text-gray-500">Drop features here</p>
+                        <p className="text-gray-500">{t('step2.dropzone')}</p>
                     </div>
                 ) : (
                     <div className="flex flex-wrap gap-3 justify-center">
@@ -86,7 +88,7 @@ const Step2Features: React.FC<Step2FeaturesProps> = ({ selectedFeatures, setSele
           disabled={selectedFeatures.length === 0}
           className="px-8 py-4 bg-cyan-500 text-gray-900 font-bold rounded-md hover:bg-cyan-400 transition-all duration-300 disabled:bg-gray-600 disabled:text-gray-400 disabled:cursor-not-allowed text-lg"
         >
-          Proceed to Generation
+          {t('step2.button')}
         </button>
       </div>
     </div>

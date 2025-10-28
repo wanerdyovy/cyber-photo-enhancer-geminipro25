@@ -1,6 +1,4 @@
-
 import { GoogleGenAI, Modality } from "@google/genai";
-import { Feature } from '../types';
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
 
@@ -25,9 +23,11 @@ export const verifyIsPersonalPhoto = async (imageBase64: string): Promise<boolea
   }
 };
 
-export const generateCyberpunkImage = async (imageBase64: string, features: Feature[]): Promise<string | null> => {
+// FIX: Changed 'features' parameter type from 'Feature[]' to 'string[]' to accept translated feature names.
+export const generateCyberpunkImage = async (imageBase64: string, features: string[]): Promise<string | null> => {
     try {
-        const featureText = features.map(f => f.name).join(', ');
+        // FIX: The 'features' array now contains strings directly, so we just join them.
+        const featureText = features.join(', ');
         const prompt = `Transform this personal photo into a high-quality, photorealistic cyberpunk style. 
         Incorporate the following features seamlessly: ${featureText}. 
         The final image should have a dark, neon-lit, futuristic aesthetic. 

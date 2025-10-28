@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useTranslation } from '../i18n';
 
 interface StepIndicatorProps {
   currentStep: number;
@@ -38,14 +39,15 @@ const Step: React.FC<{ step: number, title: string, currentStep: number }> = ({ 
 
 
 const StepIndicator: React.FC<StepIndicatorProps> = ({ currentStep }) => {
+  const { t } = useTranslation();
   return (
     <div className="w-full max-w-2xl mx-auto mb-12">
       <div className="flex items-center justify-between">
-        <Step step={1} title="Upload Photo" currentStep={currentStep} />
+        <Step step={1} title={t('steps.1')} currentStep={currentStep} />
         <div className={`flex-1 h-1 mx-4 rounded ${currentStep > 1 ? 'bg-purple-600' : 'bg-gray-700'}`}></div>
-        <Step step={2} title="Select Features" currentStep={currentStep} />
+        <Step step={2} title={t('steps.2')} currentStep={currentStep} />
         <div className={`flex-1 h-1 mx-4 rounded ${currentStep > 2 ? 'bg-purple-600' : 'bg-gray-700'}`}></div>
-        <Step step={3} title="Generate" currentStep={currentStep} />
+        <Step step={3} title={t('steps.3')} currentStep={currentStep} />
       </div>
     </div>
   );
