@@ -1,0 +1,5 @@
+{
+  "name": "Cyberpunk Photo Enhancer",
+  "description": "Upload a personal photo, select cyberpunk features with drag-and-drop, and generate a new, stylized image using AI.",
+  "requestFramePermissions": []
+}
