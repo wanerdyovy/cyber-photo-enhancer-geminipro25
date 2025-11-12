@@ -38,7 +38,8 @@
     "available": "可用特征",
     "selected": "您选择的增强功能",
     "dropzone": "将特征拖放到此处",
-    "button": "继续生成"
+    "button": "继续生成",
+    "feelingLucky": "手气不错"
   },
   "step3": {
     "title": "第3步：生成完成",
@@ -60,6 +61,11 @@
     }
   },
   "features": {
+    "category": {
+      "bodyMods": "身体改造",
+      "style": "风格与服装",
+      "atmosphere": "氛围与特效"
+    },
     "feat1": { "name": "霓虹纹身", "description": "发光的电路状纹身。" },
     "feat2": { "name": "义眼", "description": "机器人或发光的虹膜。" },
     "feat3": { "name": "全息头发", "description": "闪闪发光的彩色全息图头发。" },

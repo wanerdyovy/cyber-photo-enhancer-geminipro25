@@ -38,7 +38,8 @@
     "available": "可用特徵",
     "selected": "您選擇的增強功能",
     "dropzone": "將特徵拖放到此處",
-    "button": "繼續生成"
+    "button": "繼續生成",
+    "feelingLucky": "手氣不錯"
   },
   "step3": {
     "title": "第3步：生成完成",
@@ -60,6 +61,11 @@
     }
   },
   "features": {
+    "category": {
+      "bodyMods": "身體改造",
+      "style": "風格與服裝",
+      "atmosphere": "氛圍與特效"
+    },
     "feat1": { "name": "霓虹紋身", "description": "發光的電路狀紋身。" },
     "feat2": { "name": "義眼", "description": "機器人或發光的虹膜。" },
     "feat3": { "name": "全息頭髮", "description": "閃閃發光的彩色全息圖頭髮。" },

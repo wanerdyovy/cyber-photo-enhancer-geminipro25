@@ -38,7 +38,8 @@
     "available": "Available Features",
     "selected": "Your Chosen Enhancements",
     "dropzone": "Drop features here",
-    "button": "Proceed to Generation"
+    "button": "Proceed to Generation",
+    "feelingLucky": "I'm Feeling Lucky"
   },
   "step3": {
     "title": "Step 3: Generation Complete",
@@ -60,6 +61,11 @@
     }
   },
   "features": {
+    "category": {
+      "bodyMods": "Body Modifications",
+      "style": "Style & Apparel",
+      "atmosphere": "Atmosphere & Effects"
+    },
     "feat1": { "name": "Neon Tattoos", "description": "Glowing, circuit-like tattoos." },
     "feat2": { "name": "Cybernetic Eyes", "description": "Robotic or glowing irises." },
     "feat3": { "name": "Holographic Hair", "description": "Shimmering, colorful hologram hair." },

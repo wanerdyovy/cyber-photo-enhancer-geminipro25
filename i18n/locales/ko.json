@@ -38,7 +38,8 @@
     "available": "사용 가능한 기능",
     "selected": "선택한 강화 기능",
     "dropzone": "여기에 기능 드롭",
-    "button": "생성으로 진행"
+    "button": "생성으로 진행",
+    "feelingLucky": "운에 맡기기"
   },
   "step3": {
     "title": "3단계: 생성 완료",
@@ -60,6 +61,11 @@
     }
   },
   "features": {
+    "category": {
+      "bodyMods": "신체 개조",
+      "style": "스타일 및 의상",
+      "atmosphere": "분위기 및 효과"
+    },
     "feat1": { "name": "네온 타투", "description": "빛나는 회로 같은 타투." },
     "feat2": { "name": "사이보그 눈", "description": "로봇 같거나 빛나는 홍채." },
     "feat3": { "name": "홀로그램 헤어", "description": "반짝이는 다채로운 홀로그램 머리." },

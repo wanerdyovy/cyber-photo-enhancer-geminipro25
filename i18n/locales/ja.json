@@ -38,7 +38,8 @@
     "available": "利用可能な機能",
     "selected": "選択した拡張機能",
     "dropzone": "ここに機能をドロップ",
-    "button": "生成に進む"
+    "button": "生成に進む",
+    "feelingLucky": "おまかせ選択"
   },
   "step3": {
     "title": "ステップ3：生成完了",
@@ -60,6 +61,11 @@
     }
   },
   "features": {
+    "category": {
+      "bodyMods": "身体改造",
+      "style": "スタイル＆アパレル",
+      "atmosphere": "雰囲気＆エフェクト"
+    },
     "feat1": { "name": "ネオンタトゥー", "description": "光る回路のようなタトゥー。" },
     "feat2": { "name": "サイバネティックアイ", "description": "ロボットのような、または光る虹彩。" },
     "feat3": { "name": "ホログラフィックヘア", "description": "きらめくカラフルなホログラムの髪。" },
