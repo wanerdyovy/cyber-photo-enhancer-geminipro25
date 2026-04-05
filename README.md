@@ -2,12 +2,6 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
-
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
-
 # Cyber Photo Enhancer — Gemini Pro 2.5
 
 AI-powered cyberpunk-style photo enhancer built with **Google Gemini 2.5**.  
@@ -210,17 +204,4 @@ If you like this project:
 
 - Star the repo  
 - Share it  
-- Build something cool with it
-
-View your app in AI Studio: https://ai.studio/apps/drive/1ilC2TxFjrZTKSXHobpAtvNezIsP4OAF9
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- Build something cool with it  
