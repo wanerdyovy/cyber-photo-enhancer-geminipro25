@@ -95,32 +95,6 @@ http://localhost:5173
 
 ---
 
-## 🧪 How It Works
-
-1. Upload an image  
-2. Prompt Gemini for cyber enhancement  
-3. AI generates edited version  
-4. Download the result  
-
-Gemini handles both image understanding and transformation in one pipeline.
-
----
-
-## 📁 Project Structure
-
-```
-cyber-photo-enhancer/
-│
-├── src/
-├── components/
-├── lib/
-├── public/
-├── .env.local
-└── package.json
-```
-
----
-
 ## 🔑 Environment Variables
 
 | Variable | Description |
@@ -161,23 +135,6 @@ Build:
 ```bash
 npm run build
 ```
-
----
-
-## 📸 Screenshots
-
-(Add your before/after images here)
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Style presets
-- [ ] Multiple cyber styles
-- [ ] Batch processing
-- [ ] Download HD
-- [ ] Prompt editor
-- [ ] History gallery
 
 ---
 
